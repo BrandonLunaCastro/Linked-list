@@ -2,9 +2,16 @@ class LinkedList {
     constructor(){
         this.head = null;
         this.tail = null;
+        this.size = 0;
     }
     head(){
         return this.head;
+    }
+    tail(){
+        return this.tail;
+    }
+    size(){
+        return this.size
     }
     append(value){
         let node = new Node(value);
@@ -14,11 +21,13 @@ class LinkedList {
             this.tail.nextNode = node;
         }
         this.tail = node;
+        this.size++;
     }
     prepend(value){
         let node = new Node(value);
         node.nextNode = this.head.nextNode
         this.head.nextNode = node;
+        this.size++;
     }
     toString(){
         return console.log();
