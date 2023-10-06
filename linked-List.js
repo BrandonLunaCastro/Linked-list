@@ -1,9 +1,9 @@
 class LinkedList {
     append(value){
-        return value = new node(value)
+        return value = new node(value);
     }
     prepend(value){
-        return value = new node(value)
+        return value = new node(value);
     }
 }
 class node {
@@ -12,3 +12,4 @@ class node {
         this.nextNode = nextNode
     }
 }
+
