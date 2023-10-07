@@ -13,28 +13,47 @@ class LinkedList {
     size(){
         return this.size
     }
-    index(index){
-        return node.index
+    at(index){
+        let actualNode = this.head;
+        let actualIndex = 0;
+
+        while (actualIndex !== index ){
+            actualIndex++
+            actualNode = actualNode.nextNode
+        }
+        return actualNode
+
+    }
+    contain(value){
+        let aux = this.head;
+        let isPresent = false;
+        if(aux.value === value)return true;
+        while (aux.nextNode !== null){
+            aux = aux.nextNode;
+            if (aux.value === value){
+                isPresent = true;
+                break;
+            }
+        };
+        return isPresent; 
     }
     append(value){
         let node = new Node(value);
         if(this.head === null){
             this.head = node;
-            this.index = 0
         }else{
             this.tail.nextNode = node;
         }
         this.tail = node;
         this.size++;
-        node.index = this.size;
     }
     prepend(value){
         let node = new Node(value);
         node.nextNode = this.head.nextNode;
         this.head.nextNode = node;
         this.size++;
-        node.index = this.size
     }
+
     toString(){
         return console.log();
     }
@@ -43,7 +62,6 @@ class Node {
     constructor(value = null, nextNode= null, index = null) {
         this.value = value;
         this.nextNode = nextNode;
-        this.index = index; 
     };
 }
 const listOne = new LinkedList()
@@ -51,4 +69,4 @@ listOne.append("one");
 listOne.append("two");
 listOne.append("three");
 listOne.prepend(2)
-console.log(listOne.head);
+console.log(listOne);
