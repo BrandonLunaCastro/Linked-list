@@ -37,6 +37,17 @@ class LinkedList {
         };
         return isPresent; 
     }
+    pop(){
+        let actual = this.head;
+        while(actual !== null && actual.nextNode.nextNode === null){  
+            actual = actual.nextNode;
+            if(actual.nextNode.nextNode === null){
+                this.tail = actual;
+                actual.nextNode = null;
+            } 
+        }
+        this.size--;
+    }
     append(value){
         let node = new Node(value);
         if(this.head === null){
@@ -59,7 +70,7 @@ class LinkedList {
     }
 }
 class Node {
-    constructor(value = null, nextNode= null, index = null) {
+    constructor(value = null, nextNode= null) {
         this.value = value;
         this.nextNode = nextNode;
     };
@@ -69,4 +80,8 @@ listOne.append("one");
 listOne.append("two");
 listOne.append("three");
 listOne.prepend(2)
+listOne.pop()
 console.log(listOne);
+listOne.append(3);
+console.log(listOne);
+//console.log(listOne.tail)
