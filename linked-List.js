@@ -48,6 +48,21 @@ class LinkedList {
         }
         this.size--;
     }
+    find(value){
+        let aux = this.head;
+        let index = 0;
+        let actualIndex = null;
+        if(aux.value === value)return index;
+        while(aux.nextNode !== null){
+            aux = aux.nextNode;
+            index++;
+            if(aux.value === value){
+                actualIndex = index;
+                break;
+            }
+        }
+        return actualIndex;
+    }
     append(value){
         let node = new Node(value);
         if(this.head === null){
@@ -80,8 +95,5 @@ listOne.append("one");
 listOne.append("two");
 listOne.append("three");
 listOne.prepend(2)
-listOne.pop()
-console.log(listOne);
-listOne.append(3);
-console.log(listOne);
+console.log(listOne.find("two"))
 //console.log(listOne.tail)
