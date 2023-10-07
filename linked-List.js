@@ -91,13 +91,28 @@ class LinkedList {
     insertAt(value, i){
         let index = 0;
         let actualNode = this.head;
-        while(actualNode.nextNode !== null){
-           let aux = actualNode.nextNode
-           if(i === index){              
-                let node = new Node(value);
+        let previousNode = null
+        let node = new Node(value);
+        while(index <= i){
+            let aux = actualNode.nextNode
+            if(index + 1 === i ){
+                previousNode = actualNode;
+            }
+            if( i === 0 ){
+                this.head = node; 
+                this.head.nextNode = aux;
+                break;
+            } 
+            if(i === this.size-1 && index === this.size-1){   
+                this.tail = node 
+                previousNode.nextNode = this.tail; 
+                break;
+            }   
+            console.log(index)
+            if(i === index){           
                 actualNode = node;
                 actualNode.nextNode = aux;
-                console.log(actualNode)
+                previousNode.nextNode = actualNode;
                 break;
             }
             actualNode = actualNode.nextNode
@@ -117,6 +132,6 @@ listOne.append("two");
 listOne.append("three");
 listOne.append("fourth")
 listOne.prepend(2)
-listOne.insertAt("dos",1)
-console.log(listOne.toString())
-console.log(listOne)
+listOne.insertAt("tres",3)
+console.log(listOne.toString());
+console.log(listOne);
