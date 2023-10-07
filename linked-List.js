@@ -79,7 +79,6 @@ class LinkedList {
         this.head.nextNode = node;
         this.size++;
     }
-
     toString(){
         let actualNode = this.head;
         let list =` ( ${actualNode.value} ) -> `
@@ -88,6 +87,22 @@ class LinkedList {
             list += `( ${actualNode.value} ) -> `
         }
         return list += `( ${this.tail.nextNode} )`;
+    }
+    insertAt(value, i){
+        let index = 0;
+        let actualNode = this.head;
+        while(actualNode.nextNode !== null){
+           let aux = actualNode.nextNode
+           if(i === index){              
+                let node = new Node(value);
+                actualNode = node;
+                actualNode.nextNode = aux;
+                console.log(actualNode)
+                break;
+            }
+            actualNode = actualNode.nextNode
+            index++;
+        }
     }
 }
 class Node {
@@ -102,8 +117,6 @@ listOne.append("two");
 listOne.append("three");
 listOne.append("fourth")
 listOne.prepend(2)
+listOne.insertAt("dos",1)
 console.log(listOne.toString())
-listOne.pop()
-console.log(listOne.toString())
-console.log(listOne.tail)
-//console.log(listOne.tail)
+console.log(listOne)
