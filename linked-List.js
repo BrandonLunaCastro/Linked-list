@@ -39,7 +39,7 @@ class LinkedList {
     }
     pop(){
         let actual = this.head;
-        while(actual !== null && actual.nextNode.nextNode === null){  
+        while(actual !== null && actual.nextNode !== null){  
             actual = actual.nextNode;
             if(actual.nextNode.nextNode === null){
                 this.tail = actual;
@@ -81,7 +81,13 @@ class LinkedList {
     }
 
     toString(){
-        return console.log();
+        let actualNode = this.head;
+        let list =` ( ${actualNode.value} ) -> `
+        while(actualNode.nextNode !== null){
+            actualNode = actualNode.nextNode
+            list += `( ${actualNode.value} ) -> `
+        }
+        return list += `( ${this.tail.nextNode} )`;
     }
 }
 class Node {
@@ -94,6 +100,10 @@ const listOne = new LinkedList()
 listOne.append("one");
 listOne.append("two");
 listOne.append("three");
+listOne.append("fourth")
 listOne.prepend(2)
-console.log(listOne.find("two"))
+console.log(listOne.toString())
+listOne.pop()
+console.log(listOne.toString())
+console.log(listOne.tail)
 //console.log(listOne.tail)
