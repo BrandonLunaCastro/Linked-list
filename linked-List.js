@@ -108,7 +108,6 @@ class LinkedList {
                 previousNode.nextNode = this.tail; 
                 break;
             }   
-            console.log(index)
             if(i === index){           
                 actualNode = node;
                 actualNode.nextNode = aux;
@@ -122,15 +121,22 @@ class LinkedList {
     removeAt(i){
         let index = 0; 
         let aux = this.head;
+        let lastNode;
         if ( i === 0 ){
             this.head = aux.nextNode;
             aux.nextNode = aux.nextNode;
+            return;
         }
-        while ( i < index ){
-            aux = aux.nextNode; 
-            console.log(aux);
+        while (index < i ){ 
+            lastNode = aux;            
             index++;
+            aux = aux.nextNode;
         } 
+        if( this.size - 1  === index ){
+            this.tail = lastNode;
+        }
+        if(lastNode.nextNode === null)return null
+        lastNode.nextNode = aux.nextNode;
         this.size--;
     }
 
@@ -147,5 +153,6 @@ listOne.append("two");
 listOne.append("three");
 listOne.append("fourth")
 listOne.prepend(2)
-listOne.removeAt(2)
+listOne.removeAt(1)
 console.log(listOne.toString())
+console.log(listOne)
