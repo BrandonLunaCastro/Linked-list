@@ -94,7 +94,7 @@ class LinkedList {
         let previousNode = null
         let node = new Node(value);
         while(index <= i){
-            let aux = actualNode.nextNode
+            let aux = actualNode.nextNode;
             if(index + 1 === i ){
                 previousNode = actualNode;
             }
@@ -104,7 +104,7 @@ class LinkedList {
                 break;
             } 
             if(i === this.size-1 && index === this.size-1){   
-                this.tail = node 
+                this.tail = node; 
                 previousNode.nextNode = this.tail; 
                 break;
             }   
@@ -115,10 +115,25 @@ class LinkedList {
                 previousNode.nextNode = actualNode;
                 break;
             }
-            actualNode = actualNode.nextNode
+            actualNode = actualNode.nextNode;
             index++;
         }
     }
+    removeAt(i){
+        let index = 0; 
+        let aux = this.head;
+        if ( i === 0 ){
+            this.head = aux.nextNode;
+            aux.nextNode = aux.nextNode;
+        }
+        while ( i < index ){
+            aux = aux.nextNode; 
+            console.log(aux);
+            index++;
+        } 
+        this.size--;
+    }
+
 }
 class Node {
     constructor(value = null, nextNode= null) {
@@ -132,6 +147,5 @@ listOne.append("two");
 listOne.append("three");
 listOne.append("fourth")
 listOne.prepend(2)
-listOne.insertAt("tres",3)
-console.log(listOne.toString());
-console.log(listOne);
+listOne.removeAt(2)
+console.log(listOne.toString())
